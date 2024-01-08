@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script async src="./index.js"></script>
+    <title>Buscador ML</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <form class="header__search-form">
+        <input type="text" name="Buscador" class="header__search-input" placeholder="Buscar...">
+        <button class="header__send-button">Buscar</button>
+      </form>
+    </header>
+
+    <main class="results-container">
+      <span class="search-results">Resultados: <span></span class="search-results__quantity">34341</span>
+    </main>
+
+    <template class="template-product">
+      <section class="products-container">
+        <div class="product">
+          <img src="https://www.novogar.com.ar/public/images/productos/producto_829_1.jpg" alt="Imagen del Producto"
+            class="product__img">
+          <div class="product__description-container">
+            <div class="product__description-details">
+              <div class="product__principal-details">
+                <h4 class="product__title">Nombre del producto</h4>
+                <span class="product__estado">Nuevo</span>
+              </div>
+              <span class="product__sells">Vendidos: <span class="product__sells__quantity">34</span> </span>
+            </div>
+            <span class="product__price">$1111</span>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <script>
+      // Clonar y activar el template
+      const templateEl = document.querySelector('.template-product');
+      const clone = templateEl.content.cloneNode(true);
+      const clone2 = templateEl.content.cloneNode(true);
+      const clone3 = templateEl.content.cloneNode(true);
+      const clone4 = templateEl.content.cloneNode(true);
+      document.body.appendChild(clone);
+      document.body.appendChild(clone2);
+      document.body.appendChild(clone3);
+      document.body.appendChild(clone4);
+      /* Ver si hacer MVC o no */
+    </script>
+  </body>
+
+</html>
