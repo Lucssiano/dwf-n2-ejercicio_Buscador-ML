@@ -12,6 +12,7 @@
 
   <body>
     <header class="header">
+      <!-- Marce agrego un contenedor del formulario -->
       <form class="header__search-form">
         <input type="text" name="buscador" class="header__search-input" placeholder="Buscar...">
         <button class="header__send-button">Buscar</button>
@@ -19,31 +20,29 @@
     </header>
 
     <main class="results-container">
-      <span class="search-results">Resultados: </span> <span class="search-results__quantity"></span>
+      <!-- Marce puso un h3 en vez de un span y después si un span -->
+      <h3 class="search-results-title">Resultados: <span class="search-results__quantity"></span></h3>
+      <div class="results"></div>
     </main>
 
     <section class="loader-container">
       <i class='bx bx-loader-circle bx-spin'></i>
     </section>
 
-    <template class="template-product">
-      <section class="product-container">
+    <template id="template-product">
+      <div class="product-container">
         <a target="_blank" class="product-permalink">
           <div class="product">
-            <img alt="Imagen del Producto" class="product__img">
+            <img src="https://picsum.photos/200/300" alt="Imagen del Producto" class="product__img">
             <div class="product__description-container">
-              <div class="product__description-details">
-                <div class="product__principal-details">
-                  <h4 class="product__title"></h4>
-                  <span class="product__condition"></span>
-                </div>
-                <span class="product__stock">Stock: <span class="product__stock__quantity"></span></span>
-              </div>
-              <span class="product__price"></span>
+              <h4 class="product__title">Titulo</h4>
+              <p class="product__condition">Nuevo</p>
+              <p class="product__stock">Stock: <span class="product__stock__quantity">20</span></p>
             </div>
+            <span class="product__price">$1000</span>
           </div>
         </a>
-      </section>
+      </div>
     </template>
   </body>
 

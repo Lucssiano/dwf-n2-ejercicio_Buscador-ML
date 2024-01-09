@@ -1,15 +1,10 @@
-function searchProduct(form) {
+function searchProduct(searchQuery) {
 	const loaderEl = document.querySelector('.loader-container');
 	loaderEl.style.display = 'inherit';
 
-	const searchQuery = form.buscador.value;
 	const searchResultsQuantityEl = document.querySelector('.search-results__quantity');
-	const templateEl = document.querySelector('.template-product');
-
-	/* Forma que se me ocurrio para eliminar los productos que se muestran en pantalla en una nueva busqueda */
-	const productContainerEl = document.querySelectorAll('.product-container');
-	if (productContainerEl.length > 0) productContainerEl.forEach((element) => element.remove());
-	/* ##################################################################################################### */
+	const productsContainer = document.querySelector('.results');
+	const templateEl = document.getElementById('template-product');
 
 	fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${searchQuery}`)
 		.then((res) => res.json())
@@ -30,25 +25,14 @@ function searchProduct(form) {
 				const productPriceEl = cloneTemplate.querySelector('.product__price');
 				/* ################ */
 
-				const productLink = element.permalink;
-				productLinkEl['href'] = productLink;
+				productLinkEl['href'] = element.permalink;
+				productImageEl['src'] = element.thumbnail;
+				productTitleEl.innerText = element.title;
+				productConditionEl.innerText = element.condition === 'new' ? 'Nuevo' : 'Usado';
+				productStockQuantityEl.innerText = element.available_quantity;
+				productPriceEl.innerText = `$${element.price}`;
 
-				const productImage = element.thumbnail;
-				productImageEl['src'] = productImage;
-
-				const productTitle = element.title;
-				productTitleEl.innerText = productTitle;
-
-				const productCondition = element.condition === 'new' ? 'Nuevo' : 'Usado';
-				productConditionEl.innerText = productCondition;
-
-				const productStockQuantity = element.available_quantity;
-				productStockQuantityEl.innerText = productStockQuantity;
-
-				const productPrice = element.price;
-				productPriceEl.innerText = `$${productPrice}`;
-
-				document.body.appendChild(cloneTemplate);
+				productsContainer.appendChild(cloneTemplate);
 			});
 			loaderEl.style.display = 'none';
 		});
@@ -59,7 +43,11 @@ function main() {
 
 	formEl.addEventListener('submit', (e) => {
 		e.preventDefault();
-		searchProduct(e.target);
+		/* Forma que se me ocurrio para eliminar los productos que se muestran en pantalla en una nueva busqueda */
+		const productContainerEl = document.querySelectorAll('.product-container');
+		if (productContainerEl.length > 0) productContainerEl.forEach((element) => element.remove());
+		/* ##################################################################################################### */
+		searchProduct(e.target.buscador.value);
 	});
 }
 main();
