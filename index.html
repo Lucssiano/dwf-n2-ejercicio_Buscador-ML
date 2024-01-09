@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <script async src="./index.js"></script>
     <title>Buscador ML</title>
   </head>
@@ -21,8 +22,12 @@
       <span class="search-results">Resultados: </span> <span class="search-results__quantity"></span>
     </main>
 
+    <section class="loader-container">
+      <i class='bx bx-loader-circle bx-spin'></i>
+    </section>
+
     <template class="template-product">
-      <section class="products-container">
+      <section class="product-container">
         <a target="_blank" class="product-permalink">
           <div class="product">
             <img alt="Imagen del Producto" class="product__img">

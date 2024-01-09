@@ -1,7 +1,15 @@
 function searchProduct(form) {
+	const loaderEl = document.querySelector('.loader-container');
+	loaderEl.style.display = 'inherit';
+
 	const searchQuery = form.buscador.value;
 	const searchResultsQuantityEl = document.querySelector('.search-results__quantity');
 	const templateEl = document.querySelector('.template-product');
+
+	/* Forma que se me ocurrio para eliminar los productos que se muestran en pantalla en una nueva busqueda */
+	const productContainerEl = document.querySelectorAll('.product-container');
+	if (productContainerEl.length > 0) productContainerEl.forEach((element) => element.remove());
+	/* ##################################################################################################### */
 
 	fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${searchQuery}`)
 		.then((res) => res.json())
@@ -42,6 +50,7 @@ function searchProduct(form) {
 
 				document.body.appendChild(cloneTemplate);
 			});
+			loaderEl.style.display = 'none';
 		});
 }
 

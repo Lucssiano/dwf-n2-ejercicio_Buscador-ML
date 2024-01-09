@@ -60,14 +60,25 @@ header.header {
 /* .search-results__quantity {
 } */
 
+/* ### Loader ### */
+.loader-container {
+	max-width: 510px;
+	margin: 50px auto;
+	text-align: center;
+	display: none;
+}
+.loader-container i {
+	font-size: 100px;
+}
+
 /* ### Product Block ### */
-.products-container {
+.product-container {
 	max-width: 510px;
 	margin: 0 10px;
 }
 /* Ver forma de no tener que hacer estos arreglos */
 @media (min-width: 525px) {
-	.products-container {
+	.product-container {
 		max-width: 510px;
 		margin: 0 auto;
 	}
@@ -90,12 +101,14 @@ header.header {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	text-align: center;
 	height: 45vh;
 }
 @media (min-width: 525px) {
 	.product {
 		flex-direction: row;
 		height: auto;
+		text-align: left;
 	}
 }
 .product__description-container {
@@ -109,7 +122,7 @@ header.header {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: stretch;
-		padding: 10px 0;
+		padding: 10px;
 	}
 }
 .product__description-details {
@@ -119,6 +132,7 @@ header.header {
 @media (min-width: 525px) {
 	.product__description-details {
 		justify-content: space-between;
+		padding-right: 10px;
 	}
 }
 /* .product__principal-details{
@@ -142,16 +156,17 @@ header.header {
 	font-size: 28px;
 	color: #5791a4;
 	font-weight: 700;
-	margin-top: 15px;
+	margin-top: 10px;
 }
 @media (min-width: 525px) {
 	.product__price {
 		margin-top: 0;
 	}
 }
-/* .product__stock {
+.product__stock {
+	margin-top: 10px;
 }
-.product__stock__quantity {
+/* .product__stock__quantity {
 } */
 
 /* Mejorar padding y margenes */
